@@ -1,1 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
+<title>For Mounika ❤️</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  min-height:100vh;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  color:white;
+  text-align:center;
+  background:
+    radial-gradient(circle at top,#ffb6d5,#8e6de8 55%,#241044);
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:25px;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  animation:show .8s ease;
+}
+
+.screen.active{
+  display:flex;
+}
+
+.box{
+  width:92%;
+  max-width:440px;
+  padding:35px 25px;
+  border-radius:30px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.3);
+  backdrop-filter:blur(18px);
+  box-shadow:0 20px 60px rgba(0,0,0,.35);
+}
+
+h1{
+  font-size:32px;
+  margin-bottom:18px;
+}
+
+h2{
+  font-size:27px;
+  margin-bottom:18px;
+}
+
+p{
+  font-size:18px;
+  line-height:1.7;
+}
+
+button{
+  margin-top:25px;
+  padding:15px 28px;
+  border:0;
+  border-radius:50px;
+  background:white;
+  color:#8b4de8;
+  font-size:17px;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 0 25px rgba(255,255,255,.7);
+}
+
+button:active{
+  transform:scale(.93);
+}
+
+.gift{
+  font-size:85px;
+  cursor:pointer;
+  animation:bounce 1.4s infinite;
+}
+
+.emoji{
+  font-size:65px;
+  margin-bottom:15px;
+}
+
+.name{
+  font-size:45px;
+  font-weight:bold;
+  background:linear-gradient(90deg,#fff,#ffd2e8,#fff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.choice{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.choice button{
+  min-width:130px;
+}
+
+#secret{
+  display:none;
+  margin-top:20px;
+  font-size:20px;
+}
+
+.count{
+  font-size:70px;
+  font-weight:bold;
+}
+
+.envelope{
+  font-size:100px;
+  cursor:pointer;
+  animation:shake 1s infinite;
+}
+
+.heart{
+  position:fixed;
+  bottom:-40px;
+  pointer-events:none;
+  animation:float 5s linear forwards;
+}
+
+.confetti{
+  position:fixed;
+  top:-20px;
+  font-size:25px;
+  animation:fall 4s linear forwards;
+}
+
+@keyframes show{
+  from{
+    opacity:0;
+    transform:scale(.8);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+@keyframes bounce{
+  50%{transform:translateY(-15px) scale(1.08)}
+}
+
+@keyframes shake{
+  0%,100%{transform:rotate(0)}
+  25%{transform:rotate(-8deg)}
+  75%{transform:rotate(8deg)}
+}
+
+@keyframes float{
+  from{
+    transform:translateY(0) rotate(0);
+    opacity:0;
+  }
+  15%{opacity:1}
+  to{
+    transform:translateY(-110vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(720deg);
+    opacity:0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+
+<!-- 1 -->
+<div class="screen active" id="screen1">
+  <div class="box">
+
+    <div class="gift" onclick="go(2)">
+      🎁
+    </div>
+
+    <h1>A Gift For You...</h1>
+
+    <p>
+      This isn't an ordinary Rakhi message. 👀
+      <br>
+      There's a little surprise hidden inside.
+    </p>
+
+    <button onclick="go(2)">
+      Touch the Gift 🎁
+    </button>
+
+  </div>
+</div>
+
+
+<!-- 2 -->
+<div class="screen" id="screen2">
+  <div class="box">
+
+    <div class="emoji">🔐</div>
+
+    <h2>SECRET LOCKED</h2>
+
+    <p>
+      Only one special person can open this.
+      <br><br>
+      Her name starts with...
+    </p>
+
+    <button onclick="go(3)">
+      M 💗
+    </button>
+
+  </div>
+</div>
+
+
+<!-- 3 -->
+<div class="screen" id="screen3">
+  <div class="box">
+
+    <div class="name">Mounika</div>
+
+    <p>
+      ✔ Name found<br>
+      ✔ Special sister found<br>
+      ✔ Surprise unlocked
+    </p>
+
+    <button onclick="go(4)">
+      Unlock 🔓
+    </button>
+
+  </div>
+</div>
+
+
+<!-- 4 -->
+<div class="screen" id="screen4">
+  <div class="box">
+
+    <div class="emoji">👀</div>
+
+    <h2>One Question...</h2>
+
+    <p>
+      Mounika, are you ready
+      for your surprise?
+    </p>
+
+    <div class="choice">
+
+      <button onclick="yes()">YES ❤️</button>
+
+      <button onclick="no()">NO 🙈</button>
+
+    </div>
+
+    <div id="secret"></div>
+
+  </div>
+</div>
+
+
+<!-- 5 -->
+<div class="screen" id="screen5">
+  <div class="box">
+
+    <div class="emoji">🫂</div>
+
+    <h2>Before The Surprise...</h2>
+
+    <p>
+      There is something I want you
+      to remember...
+      <br><br>
+      A sister isn't just family.
+      She's a forever friend. ❤️
+    </p>
+
+    <button onclick="go(6)">
+      Next ✨
+    </button>
+
+  </div>
+</div>
+
+
+<!-- 6 -->
+<div class="screen" id="screen6">
+  <div class="box">
+
+    <div class="emoji">💌</div>
+
+    <h2>A Message For You</h2>
+
+    <p>
+      Through every laugh,
+      every fight,
+      every silly moment...
+      <br><br>
+      I'll always be your brother
+      and your biggest supporter. ❤️
+    </p>
+
+    <button onclick="go(7)">
+      But Wait... 👀
+    </button>
+
+  </div>
+</div>
+
+
+<!-- 7 -->
+<div class="screen" id="screen7">
+  <div class="box">
+
+    <h2>Something Is Coming...</h2>
+
+    <div class="count" id="count">
+      3
+    </div>
+
+    <p>
+      Get ready, Mounika... 🥹
+    </p>
+
+  </div>
+</div>
+
+
+<!-- 8 -->
+<div class="screen" id="screen8">
+  <div class="box">
+
+    <div class="envelope" onclick="go(9)">
+      💌
+    </div>
+
+    <h2>One Last Thing...</h2>
+
+    <p>
+      Tap the envelope
+      to open your final surprise.
+    </p>
+
+  </div>
+</div>
+
+
+<!-- FINAL -->
+<div class="screen" id="screen9">
+  <div class="box">
+
+    <div class="emoji">🎉❤️</div>
+
+    <h1>Happy Raksha Bandhan</h1>
+
+    <div class="name">Mounika</div>
+
+    <p>
+      You are one of the most special
+      people in my life. ❤️
+      <br><br>
+
+      Thank you for every laugh,
+      every fight, every memory,
+      and every moment we've shared. 🫂
+      <br><br>
+
+      No matter where life takes us,
+      I'll always be there for you.
+      ✨
+      <br><br>
+
+      <b>Love you, Sis! ❤️🫂</b>
+    </p>
+
+    <button onclick="celebrate()">
+      One More Surprise 🎊
+    </button>
+
+  </div>
+</div>
+
+
+<script>
+
+function go(n){
+
+  document.querySelectorAll(".screen")
+  .forEach(x=>x.classList.remove("active"));
+
+  document.getElementById("screen"+n)
+  .classList.add("active");
+
+  hearts();
+
+  if(n===7){
+    countdown();
+  }
+}
+
+function yes(){
+  document.getElementById("secret").style.display="block";
+  document.getElementById("secret").innerHTML=
+  "I knew you'd say YES! 😍❤️";
+
+  setTimeout(()=>{
+    go(5);
+  },1500);
+}
+
+function no(){
+  document.getElementById("secret").style.display="block";
+  document.getElementById("secret").innerHTML=
+  "Nice try 😜 You have to continue! ❤️";
+}
+
+function countdown(){
+
+  let n=3;
+  let box=document.getElementById("count");
+
+  let timer=setInterval(()=>{
+
+    n--;
+
+    if(n>0){
+      box.innerHTML=n;
+    }
+    else{
+      box.innerHTML="❤️";
+      clearInterval(timer);
+
+      setTimeout(()=>{
+        go(8);
+      },900);
+    }
+
+  },1000);
+}
+
+function hearts(){
+
+  for(let i=0;i<15;i++){
+
+    let h=document.createElement("div");
+
+    h.className="heart";
+
+    h.innerHTML=
+      ["❤️","💖","💕","✨","🌸"][Math.floor(Math.random()*5)];
+
+    h.style.left=Math.random()*100+"vw";
+
+    h.style.fontSize=
+      (18+Math.random()*25)+"px";
+
+    h.style.animationDuration=
+      (3+Math.random()*3)+"s";
+
+    document.body.appendChild(h);
+
+    setTimeout(()=>{
+      h.remove();
+    },6000);
+  }
+}
+
+function celebrate(){
+
+  for(let i=0;i<60;i++){
+
+    let c=document.createElement("div");
+
+    c.className="confetti";
+
+    c.innerHTML=
+      ["🎉","❤️","💖","✨","🌸","🥳"][Math.floor(Math.random()*6)];
+
+    c.style.left=Math.random()*100+"vw";
+
+    c.style.animationDuration=
+      (2+Math.random()*3)+"s";
+
+    document.body.appendChild(c);
+
+    setTimeout(()=>{
+      c.remove();
+    },5000);
+  }
+}
+
+</script>
+
+</body>
+</html>
